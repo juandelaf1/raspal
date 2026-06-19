@@ -26,6 +26,19 @@ class LLMConfig(BaseModel):
     model: str = "llama3.2"
     prompt: str = ""
     output_schema: dict[str, Any] | None = None
+    template: str = ""
+    temperature: float = 0.0
+    strict: bool = False
+
+
+class ChainStep(BaseModel):
+    name: str
+    prompt: str
+    output_schema: dict[str, Any] | None = None
+    template: str = ""
+    model: str = ""
+    temperature: float = 0.0
+    output_key: str | None = None
 
 
 class ThrottleConfig(BaseModel):
@@ -40,4 +53,5 @@ class PipelineConfig(BaseModel):
     cache_ttl: int = 3600
     extract: ExtractionConfig = Field(default_factory=lambda: ExtractionConfig())
     llm: LLMConfig | None = None
+    llm_chain: list[ChainStep] | None = None
     throttle: ThrottleConfig | None = None

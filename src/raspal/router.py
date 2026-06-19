@@ -60,8 +60,11 @@ class Router:
                 )
 
         text = result.get("text")
-        if config.llm and text:
-            result["llm_extraction"] = self.llm.extract(str(text), config.llm)
+        text_str = str(text) if text else ""
+        if config.llm and text_str:
+            result["llm_extraction"] = self.llm.extract(text_str, config.llm)
+        if config.llm_chain and text_str:
+            result["llm_chain"] = self.llm.extract_chain(text_str, config.llm_chain)
 
         return result
 
@@ -106,8 +109,11 @@ class Router:
                         )
 
                 text = data.get("text")
-                if config.llm and text:
-                    data["llm_extraction"] = self.llm.extract(str(text), config.llm)
+                text_str = str(text) if text else ""
+                if config.llm and text_str:
+                    data["llm_extraction"] = self.llm.extract(text_str, config.llm)
+                if config.llm_chain and text_str:
+                    data["llm_chain"] = self.llm.extract_chain(text_str, config.llm_chain)
 
                 pipeline.add(url=item.url, data=data)
                 queue.complete(item)
