@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "raspal"
-version = "0.3.0"
+version = "0.4.0"
 description = "A reusable Python scraping toolkit — Scrapling + Playwright + LLM extraction via Ollama"
 license = { text = "MIT" }
 readme = "README.md"
