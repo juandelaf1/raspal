@@ -196,6 +196,23 @@ def clear_cache(
 
 
 @app.command()
+def validate(
+    config: str = typer.Argument(..., help="Path to YAML config file"),
+):
+    """Validate a YAML config file."""
+    from raspal.router import Router
+    from raspal.exceptions import ConfigError
+
+    try:
+        router = Router()
+        router._load_config(config)
+        console.print(f"[green]✓ Config válido:[/green] {config}")
+    except ConfigError as e:
+        console.print(f"[red]✗ Config inválido:[/red] {e}")
+        raise typer.Exit(1)
+
+
+@app.command()
 def compliance(
     url: str = typer.Argument(..., help="URL a verificar"),
 ):

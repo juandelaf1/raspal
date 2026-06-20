@@ -1,0 +1,28 @@
+# Noticias: scraping de titular, fecha, autor y resumen con IA
+# Uso: raspal run examples/news-article.yaml
+
+url: "https://example.com/news/article"
+engine: auto
+cache_ttl: 7200
+timeout: 30
+
+extract:
+  text: true
+  metadata: true
+  use_selectolax: true
+  selectors:
+    headline: "h1.article-title"
+    author: "span.author"
+    date: "time.published"
+
+llm:
+  model: "llama3.2:3b"
+  template: "article"
+  prompt: "Extrae título, autor, fecha, resumen en 3 líneas y puntos clave como JSON válido"
+  output_schema:
+    title: ""
+    author: ""
+    date: ""
+    summary: ""
+    key_points: []
+  strict: true

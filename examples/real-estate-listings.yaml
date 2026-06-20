@@ -1,0 +1,33 @@
+# Inmobiliaria: listados con precio, ubicación y características
+# Uso: raspal run examples/real-estate-listings.yaml
+
+url: "https://example.com/properties/123"
+engine: playwright
+cache_ttl: 3600
+timeout: 45
+
+extract:
+  text: true
+  metadata: true
+  use_selectolax: false
+  selectors:
+    title: "h1.property-title"
+    price: "span.price"
+    location: "span.location"
+    bedrooms: "span.bedrooms"
+    bathrooms: "span.bathrooms"
+    area: "span.area"
+
+llm:
+  model: "llama3.2:3b"
+  template: "generic"
+  prompt: "Extrae información de la propiedad: título, precio, ubicación, habitaciones, baños, metros cuadrados y características principales como JSON válido"
+  output_schema:
+    title: ""
+    price: 0
+    location: ""
+    bedrooms: 0
+    bathrooms: 0
+    area_sqm: 0
+    features: []
+  strict: true

@@ -1,0 +1,30 @@
+# E-commerce: extracción de productos, precios y disponibilidad
+# Uso: raspal run examples/ecommerce-products.yaml
+
+url: "https://example.com/products"
+engine: auto
+cache_ttl: 3600
+timeout: 30
+
+extract:
+  text: true
+  metadata: true
+  use_selectolax: true
+  selectors:
+    title: "h1.product-title"
+    price: "span.price"
+    availability: "span.availability"
+    description: "div.product-description"
+
+llm:
+  model: "llama3.2:3b"
+  template: "product"
+  prompt: "Extrae nombre del producto, marca, precio, moneda, disponibilidad y descripción como JSON válido"
+  output_schema:
+    name: ""
+    brand: ""
+    price: 0.0
+    currency: ""
+    in_stock: false
+    description: ""
+  strict: true
