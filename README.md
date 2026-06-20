@@ -5,10 +5,44 @@
 **RΛSPΛL SCRAPER** es un toolkit de web scraping que combina múltiples motores de fetch con extracción de datos vía IA local (Ollama), todo desde la línea de comandos o como librería Python.
 
 ```bash
+# Recomendado: Docker (todo incluido)
+git clone https://github.com/juandelaf1/RASPAL_SCRAPER.git
+cd RASPAL_SCRAPER
+docker compose up -d
+docker compose run raspal raspal demo
+
+# Alternativa: pip install
 pip install raspal && raspal setup
 raspal fetch https://ejemplo.com
 raspal run config.yaml
 ```
+
+---
+
+## 🐳 Inicio rápido con Docker
+
+La forma más fácil de probar RASPAL SCRAPER es con Docker. Sin instalar Python, sin dependencias manuales, sin configurar Ollama.
+
+```bash
+# 1. Clonar
+git clone https://github.com/juandelaf1/RASPAL_SCRAPER.git
+cd RASPAL_SCRAPER
+
+# 2. Arrancar todo (Ollama + RASPAL)
+docker compose up -d
+
+# 3. Ejecutar demo
+docker compose run raspal raspal demo
+```
+
+**Qué incluye:**
+- Imagen optimizada con Python 3.11 + todas las dependencias
+- Playwright browsers preinstalados
+- Ollama corriendo en un contenedor separado
+- Modelo `llama3.2:3b` descargado automáticamente
+- Volúmenes persistentes para cache, outputs y pipelines
+
+Ver [`docs/quickstart-docker.md`](docs/quickstart-docker.md) para troubleshooting y más detalles.
 
 ---
 
@@ -19,6 +53,9 @@ raspal run config.yaml
 ```bash
 # Setup del entorno
 raspal setup                      # instala browsers, verifica Ollama
+
+# Verificación legal básica
+raspal compliance https://ejemplo.com  # robots.txt, dominio sensible
 
 # Crear proyecto
 raspal init                       # scaffold interactivo
@@ -205,6 +242,22 @@ raspal setup                   # instala browsers, verifica Ollama
 ```
 
 Requiere Python ≥ 3.11 y [Ollama](https://ollama.com) para extracción con IA (setup lo verifica por ti).
+
+---
+
+## ⚖️ Uso legal y ético
+
+RASPAL SCRAPER es una herramienta técnica. Tu responsabilidad es usarla de forma legal y ética.
+
+Antes de scrapear cualquier sitio:
+
+- [ ] Consulta `robots.txt` (`https://sitio.com/robots.txt`)
+- [ ] Lee los Términos de Servicio
+- [ ] Respeta rate limits (usa `AutoThrottle`)
+- [ ] No scrapees datos personales sin base legal
+- [ ] No accedas a datos detrás de autenticación o paywalls
+
+Ver [`docs/legal-and-ethics.md`](docs/legal-and-ethics.md) para más detalles.
 
 ---
 

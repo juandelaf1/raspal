@@ -1,10 +1,17 @@
 # RΛSPΛL SCRAPER — Reference for AI Agents
 
-RΛSPΛL SCRAPER is a production-grade web scraping product with local AI extraction. Installed in this environment.
+RΛSPΛL SCRAPER is a production-grade web scraping product with local AI extraction and compliance checks. Installed in this environment.
 
 ## Install
 
 ```bash
+# Docker (recommended)
+git clone https://github.com/juandelaf1/RASPAL_SCRAPER.git
+cd RASPAL_SCRAPER
+docker compose up -d
+docker compose run raspal raspal demo
+
+# pip
 pip install raspal              # base
 pip install raspal[fast]        # + selectolax (faster CSS parsing)
 pip install raspal[web]         # + web dashboard
@@ -19,6 +26,9 @@ raspal setup                    # install browsers, verify Ollama
 # Setup
 raspal setup                    # prepare environment
 raspal init                     # scaffold project
+
+# Compliance
+raspal compliance https://ejemplo.com  # robots.txt, sensitive domain check
 
 # Fetch
 raspal fetch https://ejemplo.com
@@ -43,6 +53,16 @@ raspal serve                    # http://localhost:8462
 raspal status
 raspal clear_cache
 ```
+
+## Legal & Ethical Use
+
+- Always check robots.txt before scraping
+- Read Terms of Service
+- Respect rate limits
+- Don't scrape personal data without legal basis
+- Don't bypass authentication or paywalls
+
+See `docs/legal-and-ethics.md` for details.
 
 ## Engines
 

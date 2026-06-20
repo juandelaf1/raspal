@@ -1,0 +1,50 @@
+# RΛSPΛL SCRAPER — Docker Compose para usuarios
+# Uso: docker compose up -d && docker compose run raspal raspal demo
+
+services:
+  # ============================================
+  # Servicio Ollama — IA local
+  # ============================================
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:11434/api/tags | grep -q 'models'"]
+      interval: 5s
+      timeout: 10s
+      retries: 12
+      start_period: 30s
+    # Si tienes GPU NVIDIA, descomenta estas líneas:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  # ============================================
+  # Servicio RASPAL — CLI de scraping
+  # ============================================
+  raspal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - RASPAL_DATA_DIR=/data
+      - RASPAL_PIPELINES_DIR=/pipelines
+    volumes:
+      - ./data:/data
+      - ./pipelines:/pipelines
+    stdin_open: true
+    tty: true
+    restart: "no"
+
+volumes:
+  ollama_data:

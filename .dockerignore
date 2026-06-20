@@ -1,0 +1,55 @@
+# ============================================
+# RΛSPΛL SCRAPER — Docker ignore
+# ============================================
+
+# Git
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Data and outputs (user data, not image)
+data/
+pipelines/
+*.sqlite
+*.sqlite3
+*.db
+
+# Environment files
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Node (if exists)
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files (not needed in image)
+test_*.py
+tests/
+
+# Temporary files
+*.log
+*.tmp
+.cache/

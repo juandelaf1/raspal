@@ -196,6 +196,31 @@ def clear_cache(
 
 
 @app.command()
+def compliance(
+    url: str = typer.Argument(..., help="URL a verificar"),
+):
+    """Check basic compliance signals before scraping."""
+    from raspal.compliance import check_compliance
+
+    result = check_compliance(url)
+    signals = result.get("signals", {})
+    warnings = result.get("warnings", [])
+
+    console.print(f"[bold]Dominio:[/bold] {signals.get('domain', 'N/A')}")
+    console.print(f"[bold]robots.txt:[/bold] {signals.get('robots_txt', 'N/A')}")
+
+    if signals.get("is_sensitive_domain"):
+        console.print("[yellow]⚠️  Dominio potencialmente sensible (redes sociales, salud, finanzas)[/yellow]")
+
+    if warnings:
+        console.print("\n[yellow]Advertencias:[/yellow]")
+        for warning in warnings:
+            console.print(f"  • {warning}")
+    else:
+        console.print("\n[green]✓ Sin advertencias obvias. Aun así, revisa ToS y robots.txt.[/green]")
+
+
+@app.command()
 def setup():
     """Prepare the environment: install browsers, check Ollama."""
     from raspal.setup import run_setup

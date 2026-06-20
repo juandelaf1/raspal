@@ -20,8 +20,11 @@ from raspal.pipeline import Item, Pipeline
 from raspal.queue import QueueItem, RequestQueue
 from raspal.router import Router
 from raspal.throttle import AutoThrottle
+from raspal.compliance import ComplianceChecker, check_compliance
 
 __all__ = [
+    "ComplianceChecker",
+    "check_compliance",
     "Fetcher",
     "AsyncFetcher",
     "Cache",

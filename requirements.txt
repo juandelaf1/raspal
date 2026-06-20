@@ -1,0 +1,34 @@
+# RΛSPΛL SCRAPER — Python dependencies
+# Install: pip install -r requirements.txt
+
+# Core scraping
+scrapling>=0.4.0
+curl-cffi>=0.15.0
+browserforge
+apify-fingerprint-datapoints
+playwright>=1.40.0
+
+# CLI
+typer>=0.9.0
+rich>=13.0.0
+
+# HTTP and parsing
+httpx>=0.25.0
+trafilatura>=1.6.0
+selectolax>=0.3.0
+
+# Data and validation
+pydantic>=2.0.0
+pyyaml>=6.0
+
+# AI local (Ollama)
+ollama>=0.1.0
+
+# Web dashboard (optional)
+fastapi>=0.110.0
+uvicorn>=0.27.0
+
+# Development
+pytest>=8.0.0
+ruff>=0.4.0
+mypy>=1.8.0
