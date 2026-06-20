@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "raspal"
 version = "0.4.0"
-description = "RΛSPΛL — Scraping inteligente con IA local. Scrapling + Playwright + Ollama en un solo toolkit."
+description = "RΛSPΛL SCRAPER — Web scraping toolkit with Scrapling, Playwright and local LLM extraction via Ollama."
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11"

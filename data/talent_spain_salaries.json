@@ -1,0 +1,296 @@
+[
+  {
+    "url": "https://es.talent.com/salary?job=data+engineer",
+    "scraped_at": "2026-06-21T00:08:56.486804",
+    "data": {
+      "role": "data engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=data+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=data+analyst",
+    "scraped_at": "2026-06-21T00:08:58.122435",
+    "data": {
+      "role": "data analyst",
+      "avg_salary_eur": 27500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 14.1,
+      "url": "https://es.talent.com/salary?job=data+analyst"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=machine+learning",
+    "scraped_at": "2026-06-21T00:08:59.698330",
+    "data": {
+      "role": "machine learning",
+      "avg_salary_eur": 40000.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 20.51,
+      "url": "https://es.talent.com/salary?job=machine+learning"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=ai+engineer",
+    "scraped_at": "2026-06-21T00:09:01.252030",
+    "data": {
+      "role": "ai engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=ai+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=business+intelligence",
+    "scraped_at": "2026-06-21T00:09:02.814713",
+    "data": {
+      "role": "business intelligence",
+      "avg_salary_eur": 35500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 18.21,
+      "url": "https://es.talent.com/salary?job=business+intelligence"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=data+architect",
+    "scraped_at": "2026-06-21T00:09:04.361231",
+    "data": {
+      "role": "data architect",
+      "avg_salary_eur": 22880.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 11.73,
+      "url": "https://es.talent.com/salary?job=data+architect"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=analytics+engineer",
+    "scraped_at": "2026-06-21T00:09:05.969895",
+    "data": {
+      "role": "analytics engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=analytics+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=backend+engineer",
+    "scraped_at": "2026-06-21T00:09:07.549345",
+    "data": {
+      "role": "backend engineer",
+      "avg_salary_eur": 39500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 20.26,
+      "url": "https://es.talent.com/salary?job=backend+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=frontend+engineer",
+    "scraped_at": "2026-06-21T00:09:09.134181",
+    "data": {
+      "role": "frontend engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=frontend+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=fullstack+engineer",
+    "scraped_at": "2026-06-21T00:09:10.703521",
+    "data": {
+      "role": "fullstack engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=fullstack+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=devops+engineer",
+    "scraped_at": "2026-06-21T00:09:12.261394",
+    "data": {
+      "role": "devops engineer",
+      "avg_salary_eur": 55000.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 28.21,
+      "url": "https://es.talent.com/salary?job=devops+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=mobile+engineer",
+    "scraped_at": "2026-06-21T00:09:14.143228",
+    "data": {
+      "role": "mobile engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=mobile+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=qa+engineer",
+    "scraped_at": "2026-06-21T00:09:16.250651",
+    "data": {
+      "role": "qa engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=qa+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=sysadmin",
+    "scraped_at": "2026-06-21T00:09:18.125617",
+    "data": {
+      "role": "sysadmin",
+      "avg_salary_eur": 40000.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 20.51,
+      "url": "https://es.talent.com/salary?job=sysadmin"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=security+engineer",
+    "scraped_at": "2026-06-21T00:09:20.087399",
+    "data": {
+      "role": "security engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=security+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=cloud+engineer",
+    "scraped_at": "2026-06-21T00:09:22.165864",
+    "data": {
+      "role": "cloud engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=cloud+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=data+manager",
+    "scraped_at": "2026-06-21T00:09:24.216664",
+    "data": {
+      "role": "data manager",
+      "avg_salary_eur": 24000.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 12.31,
+      "url": "https://es.talent.com/salary?job=data+manager"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=research+scientist",
+    "scraped_at": "2026-06-21T00:09:26.309145",
+    "data": {
+      "role": "research scientist",
+      "avg_salary_eur": 40500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 20.77,
+      "url": "https://es.talent.com/salary?job=research+scientist"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=computer+vision",
+    "scraped_at": "2026-06-21T00:09:28.229724",
+    "data": {
+      "role": "computer vision",
+      "avg_salary_eur": 21450.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 11.0,
+      "url": "https://es.talent.com/salary?job=computer+vision"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=nlp+engineer",
+    "scraped_at": "2026-06-21T00:09:30.358482",
+    "data": {
+      "role": "nlp engineer",
+      "avg_salary_eur": 37500.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 19.23,
+      "url": "https://es.talent.com/salary?job=nlp+engineer"
+    },
+    "errors": []
+  },
+  {
+    "url": "https://es.talent.com/salary?job=head+of+data",
+    "scraped_at": "2026-06-21T00:09:34.520239",
+    "data": {
+      "role": "head of data",
+      "avg_salary_eur": 20800.0,
+      "avg_salary_period": "a\u00f1o",
+      "entry_salary_eur": null,
+      "senior_salary_eur": null,
+      "hourly_rate_eur": 10.67,
+      "url": "https://es.talent.com/salary?job=head+of+data"
+    },
+    "errors": []
+  }
+]

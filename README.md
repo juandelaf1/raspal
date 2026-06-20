@@ -1,54 +1,14 @@
 # **RΛSPΛL SCRAPER**
 
-> De la URL al JSON estructurado. En tu máquina. Sin APIs de pago. Un solo comando.
+> Web scraping con IA local. Scrapling + Playwright + Ollama.
 
-**RΛSPΛL SCRAPER** es la única herramienta que te lleva desde una URL hasta datos estructurados listos para usar, todo en local, sin depender de servicios cloud ni APIs de terceros.
+**RΛSPΛL SCRAPER** es un toolkit de web scraping que combina múltiples motores de fetch con extracción de datos vía IA local (Ollama), todo desde la línea de comandos o como librería Python.
 
 ```bash
 pip install raspal && raspal setup
 raspal fetch https://ejemplo.com
-# → texto, metadata, todo listo
-
-raspal run config.yaml  
-# → extracción con IA via Ollama → JSON estructurado
+raspal run config.yaml
 ```
-
----
-
-## ¿Para quién es?
-
-- **Analistas de datos** que necesitan datos limpios sin escribir código complejo
-- **Ingenieros** que quieren scraper + IA en un solo pipeline
-- **Empresas** que no pueden enviar datos a servicios cloud por privacidad
-
----
-
-## ¿Por qué RΛSPΛL SCRAPER?
-
-| En lugar de... | Con RΛSPΛL SCRAPER |
-|----------------|-------------------|
-| Escribir Scrapy + BeautifulSoup + OpenAI por separado | **Un solo comando** |
-| Pagar $20/mes por Firecrawl o Apify | **Sin suscripciones, corre en tu máquina** |
-| Enviar datos a OpenAI para estructurarlos | **IA local con Ollama, cero fugas de datos** |
-| Que te baneen por scrapear agresivo | **Stealth + AutoThrottle, pareces un humano** |
-| Escribir scripts que solo funcionan en tu PC | **CLI portable, YAML configurable, dashboard web** |
-
----
-
-## Comparativa
-
-| | RΛSPΛL SCRAPER | Scrapy | BeautifulSoup | Firecrawl |
-|---|---|---|---|---|
-| Fetch automático | ✅ 3 motores | ✅ 1 motor | ❌ | ✅ |
-| Anti-detección | ✅ Stealth + Throttle | ❌ | ❌ | ❌ |
-| IA local (Ollama) | ✅ | ❌ | ❌ | ❌ |
-| Sin enviar datos externos | ✅ | ✅ | ✅ | ❌ |
-| CLI completo | ✅ | ⚠️ | ❌ | ✅ |
-| Dashboard web | ✅ | ❌ | ❌ | ✅ |
-| Cola persistente | ✅ | ❌ | ❌ | ❌ |
-| Caché con TTL | ✅ | ❌ | ❌ | ❌ |
-| Precio | **Gratis** | Gratis | Gratis | Desde $20/mes |
-| Privacidad | **Total** | Total | Total | Tus datos van a su nube |
 
 ---
 
@@ -148,7 +108,7 @@ raspal run config.yaml
 
 ## 🧠 Extracción con IA (Ollama)
 
-Sin API keys. Sin costos. Sin enviar datos a terceros.
+Usa modelos locales para estructurar datos sin depender de APIs externas.
 
 ```python
 # Templates predefinidos
@@ -177,7 +137,7 @@ llm.extract_chain(texto, chain)
 
 ---
 
-## 🚀 Async para alta escalabilidad
+## ⚡ Async
 
 ```python
 from raspal import AsyncFetcher
