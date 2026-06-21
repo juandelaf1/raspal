@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Quickstart Docker
+    url: https://github.com/juandelaf1/RASPAL_SCRAPER/blob/master/docs/quickstart-docker.md
+    about: Docker setup guide
+  - name: Legal & Ethics
+    url: https://github.com/juandelaf1/RASPAL_SCRAPER/blob/master/docs/legal-and-ethics.md
+    about: Responsible scraping guidelines
