@@ -9,7 +9,7 @@ Web scraping con IA local. Scrapling + Playwright + Ollama.
 docker run --rm -it \
   -v $(pwd)/data:/data \
   -v $(pwd)/pipelines:/pipelines \
-  raspal/raspal:latest raspal demo
+  juandelaf/raspal:latest raspal demo
 ```
 
 ## Con docker-compose
