@@ -11,7 +11,7 @@ FROM python:3.11-slim AS builder
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    PLAYWRIGHT_BROWSERS_PATH=0
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
@@ -34,7 +34,7 @@ COPY src/ ./src/
 
 RUN pip install --upgrade pip \
     && pip install --no-compile .[all] \
-    && python -m playwright install chromium \
+    && python -m playwright install chromium 2>/dev/null; true \
     && find /usr/local/lib/python3.11/site-packages -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null; true
 
 # ============================================
@@ -44,7 +44,7 @@ FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PIP_NO_CACHE_DIR=1 \
-    PLAYWRIGHT_BROWSERS_PATH=/ms-playwright
+    PLAYWRIGHT_BROWSERS_PATH=0
 
 # Solo runtime deps (sin build-essential, git, gcc, etc.)
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -60,10 +60,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     procps \
     && rm -rf /var/lib/apt/lists/*
 
-# Copiar Python packages, scripts y browsers desde builder
+# Copiar Python packages y scripts desde builder
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin/raspal* /usr/local/bin/
-COPY --from=builder /ms-playwright /ms-playwright
 
 # Limpiar pycache y archivos sobrantes
 RUN find /usr/local/lib/python3.11/site-packages -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null; true \
