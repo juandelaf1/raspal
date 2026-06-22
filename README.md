@@ -321,3 +321,9 @@ Ver [`docs/legal-and-ethics.md`](docs/legal-and-ethics.md) para más detalles.
 ## 📄 Licencia
 
 MIT — haz lo que quieras.
+
+---
+
+## Versionado
+
+RASPAL usa [SemVer](https://semver.org/). La API pública documentada en [`PUBLIC_API.md`](PUBLIC_API.md) no cambia de forma incompatible en versiones MINOR o PATCH.

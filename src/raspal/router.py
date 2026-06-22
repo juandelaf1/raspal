@@ -41,49 +41,30 @@ class Router:
             proxy=config.proxy,
         )
 
-    def run(self, config_path: str | Path) -> dict:
-        config = self._load_config(config_path)
-        self._apply_config(config)
+    def _extract(self, html: str | None, config: PipelineConfig) -> dict:
+        result: dict = {}
 
-        fetch_result = self.fetcher.fetch(
-            config.url,
-            engine=config.engine,
-            cache_ttl=config.cache_ttl,
-            timeout=config.timeout,
-        )
-
-        result = {
-            "url": config.url,
-            "status": fetch_result.status,
-            "engine": fetch_result.engine,
-            "cached": fetch_result.cached,
-        }
-
-        if fetch_result.error:
-            result["error"] = fetch_result.error
-            return result
-
-        if config.extract.text and fetch_result.html:
+        if config.extract.text and html:
             try:
-                result["text"] = self.extractor.extract_text(fetch_result.html)
+                result["text"] = self.extractor.extract_text(html)
             except Exception as e:
                 result["text_error"] = str(e)
 
-        if config.extract.metadata and fetch_result.html:
+        if config.extract.metadata and html:
             try:
-                result["metadata"] = self.extractor.extract_metadata(fetch_result.html)
+                result["metadata"] = self.extractor.extract_metadata(html)
             except Exception as e:
                 result["metadata_error"] = str(e)
 
-        if config.extract.selectors and fetch_result.html:
+        if config.extract.selectors and html:
             try:
                 if config.extract.use_selectolax:
                     result["selectors"] = self.extractor.extract_selectors_fast(
-                        fetch_result.html, config.extract.selectors
+                        html, config.extract.selectors
                     )
                 else:
                     result["selectors"] = self.extractor.extract_selectors(
-                        fetch_result.html, config.extract.selectors
+                        html, config.extract.selectors
                     )
             except Exception as e:
                 result["selectors_error"] = str(e)
@@ -104,12 +85,34 @@ class Router:
 
         return result
 
+    def _fetch_result_to_dict(self, fetch_result, config: PipelineConfig) -> dict:
+        result = {
+            "url": config.url,
+            "status": fetch_result.status,
+            "engine": fetch_result.engine,
+            "cached": fetch_result.cached,
+        }
+        if fetch_result.error:
+            result["error"] = fetch_result.error
+            return result
+        result.update(self._extract(fetch_result.html, config))
+        return result
+
+    def run(self, config_path: str | Path) -> dict:
+        config = self._load_config(config_path)
+        self._apply_config(config)
+        fetch_result = self.fetcher.fetch(
+            config.url,
+            engine=config.engine,
+            cache_ttl=config.cache_ttl,
+            timeout=config.timeout,
+        )
+        return self._fetch_result_to_dict(fetch_result, config)
+
     async def run_async(self, config_path: str | Path) -> dict:
-        """Async version of run for use in async contexts (FastAPI, etc.) using AsyncFetcher."""
         config = self._load_config(config_path)
         self._apply_config(config)
 
-        # Use AsyncFetcher for true async Playwright isolation
         async_fetcher = AsyncFetcher(
             throttle=self.throttle,
             proxy=config.proxy,
@@ -122,58 +125,7 @@ class Router:
                 cache_ttl=config.cache_ttl,
                 timeout=config.timeout,
             )
-
-            result = {
-                "url": config.url,
-                "status": fetch_result.status,
-                "engine": fetch_result.engine,
-                "cached": fetch_result.cached,
-            }
-
-            if fetch_result.error:
-                result["error"] = fetch_result.error
-                return result
-
-            if config.extract.text and fetch_result.html:
-                try:
-                    result["text"] = self.extractor.extract_text(fetch_result.html)
-                except Exception as e:
-                    result["text_error"] = str(e)
-
-            if config.extract.metadata and fetch_result.html:
-                try:
-                    result["metadata"] = self.extractor.extract_metadata(fetch_result.html)
-                except Exception as e:
-                    result["metadata_error"] = str(e)
-
-            if config.extract.selectors and fetch_result.html:
-                try:
-                    if config.extract.use_selectolax:
-                        result["selectors"] = self.extractor.extract_selectors_fast(
-                            fetch_result.html, config.extract.selectors
-                        )
-                    else:
-                        result["selectors"] = self.extractor.extract_selectors(
-                            fetch_result.html, config.extract.selectors
-                        )
-                except Exception as e:
-                    result["selectors_error"] = str(e)
-
-            text = result.get("text")
-            text_str = str(text) if text else ""
-            if config.llm and text_str:
-                try:
-                    result["llm_extraction"] = self.llm.extract(text_str, config.llm)
-                except Exception as e:
-                    result["llm_extraction_error"] = str(e)
-
-            if config.llm_chain and text_str:
-                try:
-                    result["llm_chain"] = self.llm.extract_chain(text_str, config.llm_chain)
-                except Exception as e:
-                    result["llm_chain_error"] = str(e)
-
-            return result
+            return self._fetch_result_to_dict(fetch_result, config)
         finally:
             await async_fetcher.close()
 
@@ -205,59 +157,13 @@ class Router:
                         queue.retry(item, f"HTTP {result.status}")
                         continue
 
-                    data: dict = {"status": result.status, "engine": result.engine}
-
                     if result.error:
                         queue.retry(item, result.error)
                         continue
 
-                    if config.extract.text and result.html:
-                        try:
-                            data["text"] = self.extractor.extract_text(result.html)
-                        except Exception as e:
-                            data["text_error"] = str(e)
-
-                    if config.extract.metadata and result.html:
-                        try:
-                            data["metadata"] = self.extractor.extract_metadata(
-                                result.html
-                            )
-                        except Exception as e:
-                            data["metadata_error"] = str(e)
-
-                    if config.extract.selectors and result.html:
-                        try:
-                            if config.extract.use_selectolax:
-                                data["selectors"] = (
-                                    self.extractor.extract_selectors_fast(
-                                        result.html, config.extract.selectors
-                                    )
-                                )
-                            else:
-                                data["selectors"] = self.extractor.extract_selectors(
-                                    result.html, config.extract.selectors
-                                )
-                        except Exception as e:
-                            data["selectors_error"] = str(e)
-
-                    text = data.get("text")
-                    text_str = str(text) if text else ""
-                    if config.llm and text_str:
-                        try:
-                            data["llm_extraction"] = self.llm.extract(
-                                text_str, config.llm
-                            )
-                        except Exception as e:
-                            data["llm_extraction_error"] = str(e)
-
-                    if config.llm_chain and text_str:
-                        try:
-                            data["llm_chain"] = self.llm.extract_chain(
-                                text_str, config.llm_chain
-                            )
-                        except Exception as e:
-                            data["llm_chain_error"] = str(e)
-
+                    data = self._extract(result.html, config)
+                    data["status"] = result.status
+                    data["engine"] = result.engine
                     pipeline.add(url=item.url, data=data)
                     queue.complete(item)
 
