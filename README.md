@@ -46,6 +46,23 @@ Ver [`docs/quickstart-docker.md`](docs/quickstart-docker.md) para troubleshootin
 
 ---
 
+## 🤔 Por que RASPAL vs otras opciones?
+
+| Necesitas... | Firecrawl | Apify | Browse.ai | Scrapy | **RASPAL** |
+|---|---|---|---|---|---|
+| Sin enviar datos a terceros | ❌ | ❌ | ❌ | ✅ | **✅** |
+| Sin pagar por API | ❌ | ❌ | ❌ | ✅ | **✅** |
+| Un solo comando para empezar | ❌ | ❌ | ❌ | ❌ | **✅** |
+| IA local (Ollama) | ❌ | ❌ | ❌ | ❌ | **✅** |
+| Modo stealth para sitios protegidos | ❌ | ❌ | ❌ | ❌ | **✅** |
+| Docker listo para usar | ❌ | ✅ | ❌ | ❌ | **✅** |
+| Open source (MIT) | ❌ | ❌ | ❌ | ✅ | **✅** |
+| Precio | $10+/mes | $49+/mes | $49+/mes | Gratis | **Gratis** |
+
+**RASPAL no es un reemplazo de Scrapy para proyectos grandes. RASPAL es para cuando queres extraer datos estructurados de una web en segundos, sin configurar infraestructura, sin pagar APIs, y sin que tus datos salgan de tu maquina.**
+
+---
+
 ## ⚡ Comandos
 
 ### CLI
@@ -205,18 +222,24 @@ Procesa cientos de URLs en paralelo con aislamiento por proceso para Playwright.
 
 ---
 
-## 📂 Ejemplos
+## 📂 10 templates YAML
 
-Pipelines YAML listos para usar:
+Pipelines listos para usar. Cada uno con selectores CSS + extraccion IA:
 
 ```bash
-raspal run examples/ecommerce-products.yaml    # Extraer productos de e-commerce
-raspal run examples/news-article.yaml          # Scraping de noticias con resumen IA
-raspal run examples/real-estate-listings.yaml  # Listados inmobiliarios
+raspal run examples/ecommerce-products.yaml     # Productos, precios, disponibilidad
+raspal run examples/competitor-pricing.yaml     # Monitoreo de precios competencia
+raspal run examples/product-reviews.yaml        # Resenas con sentimiento IA
+raspal run examples/news-article.yaml           # Titular, autor, resumen
+raspal run examples/job-scraper.yaml            # Ofertas de empleo
+raspal run examples/academic-research.yaml      # Papers, abstracts, citas
+raspal run examples/real-estate-listings.yaml   # Listados inmobiliarios
+raspal run examples/crypto-prices.yaml          # Precios cripto 24h
+raspal run examples/business-directory.yaml     # Datos de contacto
+raspal run examples/linkedin-company.yaml       # Perfiles publicos empresa
 ```
 
-Cada ejemplo incluye selectores CSS y configuración de extracción con IA.
-Ver [`examples/README.md`](examples/README.md).
+Ver [`examples/README.md`](examples/README.md) para descripcion de cada uno.
 
 ---
 

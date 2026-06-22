@@ -133,9 +133,16 @@ class Fetcher:
         try:
             resp = DynamicFetcher.fetch(url, **opts)
         except PlaywrightTimeout:
-            raise TimeoutError(f"Playwright timed out after {timeout}s for {url}") from None
+            raise TimeoutError(f"Playwright timed out after {timeout}s for {url}. Prueba con --engine scrapling (mas rapido) o aumenta el timeout con --timeout 60.") from None
         except Exception as e:
-            raise FetchError(f"Dynamic fetch failed for {url}: {e}") from e
+            msg = str(e)
+            if "browser" in msg.lower() or "executable" in msg.lower():
+                hint = "Playwright browser no instalado. Ejecuta: python -m playwright install chromium"
+            elif "connect" in msg.lower() or "refused" in msg.lower():
+                hint = f"No se pudo conectar con {url}. Verifica la URL y tu conexion."
+            else:
+                hint = f"Prueba con --engine scrapling (mas estable) o --engine stealth (si el sitio tiene protecciones)."
+            raise FetchError(f"Dynamic fetch fallo para {url}: {msg}. {hint}") from e
 
         html = resp.html_content
         if html is None and hasattr(resp, "body"):
@@ -172,9 +179,16 @@ class Fetcher:
         try:
             resp = StealthyFetcher.fetch(url, **opts)
         except PlaywrightTimeout:
-            raise TimeoutError(f"Stealth timed out after {timeout}s for {url}") from None
+            raise TimeoutError(f"Stealth timed out after {timeout}s for {url}. El modo stealth es mas lento por las protecciones anti-bot. Prueba con --engine playwright si el sitio no requiere stealth.") from None
         except Exception as e:
-            raise FetchError(f"Stealth fetch failed for {url}: {e}") from e
+            msg = str(e)
+            if "browser" in msg.lower() or "executable" in msg.lower():
+                hint = "Playwright browser no instalado. Ejecuta: python -m playwright install chromium"
+            elif "connect" in msg.lower() or "refused" in msg.lower():
+                hint = f"No se pudo conectar con {url}. Verifica la URL."
+            else:
+                hint = "Prueba con --engine playwright o --engine scrapling como alternativa."
+            raise FetchError(f"Stealth fetch fallo para {url}: {msg}. {hint}") from e
 
         html = resp.html_content
         if html is None and hasattr(resp, "body"):

@@ -141,7 +141,15 @@ def async_fetch(
         else:
             console.print(json.dumps(output, indent=2, default=str))
     except Exception as e:
-        console.print(f"[red]Error: {e}[/red]")
+        msg = str(e)
+        if "connect" in msg.lower() or "connection" in msg.lower():
+            console.print("[red]Error de conexion:[/red] No se pudo conectar con el servidor. Verifica la URL, tu conexion a internet, o prueba con otro motor (--engine playwright o --engine stealth).")
+        elif "timeout" in msg.lower():
+            console.print(f"[red]Timeout:[/red] La solicitud tardó demasiado. Aumenta el timeout con --timeout 60 o prueba con --engine scrapling (mas rapido).")
+        elif "ollama" in msg.lower():
+            console.print("[red]Error de Ollama:[/red] Asegurate de que Ollama este corriendo (ollama serve) y que el modelo este descargado (ollama pull llama3.2).")
+        else:
+            console.print(f"[red]Error:[/red] {msg}")
         sys.exit(1)
 
 
@@ -185,7 +193,13 @@ def async_batch(
         else:
             console.print(json.dumps(output, indent=2, default=str))
     except Exception as e:
-        console.print(f"[red]Error: {e}[/red]")
+        msg = str(e)
+        if "connect" in msg.lower() or "connection" in msg.lower():
+            console.print("[red]Error de conexion:[/red] No se pudo conectar con el servidor. Verifica la URL y tu conexion a internet.")
+        elif "timeout" in msg.lower():
+            console.print(f"[red]Timeout:[/red] Aumenta el timeout con --timeout 60 o prueba con --engine scrapling.")
+        else:
+            console.print(f"[red]Error:[/red] {msg}")
         sys.exit(1)
 
 

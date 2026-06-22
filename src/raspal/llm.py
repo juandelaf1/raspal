@@ -60,7 +60,14 @@ class LLMExtractor:
         try:
             response = self._ollama_chat(cfg.model, prompt, cfg.temperature, cfg.timeout)
         except Exception as e:
-            raise LLMError(f"Ollama call failed: {e}") from e
+            msg = str(e)
+            if "connect" in msg.lower() or "refused" in msg.lower():
+                hint = "Ollama no esta corriendo. Ejecuta 'ollama serve' en otra terminal."
+            elif "not found" in msg.lower() or "pull" in msg.lower():
+                hint = f"Modelo '{cfg.model}' no encontrado. Ejecuta 'ollama pull {cfg.model}'."
+            else:
+                hint = f"Verifica que Ollama este corriendo (ollama serve) y que el modelo '{cfg.model}' este descargado (ollama pull {cfg.model})."
+            raise LLMError(f"Ollama call failed: {msg}. {hint}") from e
         return self._parse_response(response, cfg.output_schema, cfg.strict)
 
     def _build_prompt(self, text: str, cfg: LLMConfig) -> str:
