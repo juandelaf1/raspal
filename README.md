@@ -89,6 +89,9 @@ Ver [`docs/quickstart-docker.md`](docs/quickstart-docker.md) para troubleshootin
 # Setup del entorno
 raspal setup                      # instala browsers, verifica Ollama
 
+# Diagnóstico del sistema
+raspal doctor                     # verifica Python, Ollama, Playwright, permisos
+
 # Verificación legal básica
 raspal compliance https://ejemplo.com  # robots.txt, dominio sensible
 
@@ -103,10 +106,10 @@ raspal fetch https://ejemplo.com --engine playwright
 raspal fetch https://ejemplo.com --engine stealth
 
 # Fetch asíncrono (más rápido)
-raspal async_fetch https://ejemplo.com
+raspal async-fetch https://ejemplo.com
 
 # Múltiples URLs en paralelo
-raspal async_batch https://ejemplo.com https://httpbin.org/json
+raspal async-batch https://ejemplo.com https://httpbin.org/json
 
 # Validación de config
 raspal validate config.yaml          # verifica que el YAML es correcto
@@ -127,7 +130,10 @@ raspal serve                      # http://127.0.0.1:8462
 raspal status
 
 # Limpiar caché
-raspal clear_cache
+raspal clear-cache
+
+# Versión
+raspal version
 ```
 
 ### Python API
