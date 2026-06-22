@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.1] — 2026-06-22
+
+### Fixed
+- README banner uses absolute raw URL so PyPI renders it correctly
+- CLI examples use hyphens (`async-fetch`, `clear-cache`) instead of underscores
+- Added missing `raspal doctor` and `raspal version` to README
+
+### Changed
+- pyproject.toml version bumped to 0.6.1
+- Trusted publishing configured on PyPI for CI/CD automation
+
 ## [0.6.0] — 2026-06-22
 
 ### Added
