@@ -4,6 +4,17 @@
   <img src="assets/raspal_banner.png" alt="RASPAL SCRAPER Banner" width="800">
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License">
+  <img src="https://img.shields.io/badge/ollama-local-8A2BE2?logo=ollama&logoColor=white" alt="Ollama">
+  <img src="https://img.shields.io/badge/playwright-ready-45ba4b?logo=playwright&logoColor=white" alt="Playwright">
+  <img src="https://img.shields.io/badge/docker-ready-2496ED?logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/version-0.5.0-blue" alt="Version 0.5.0">
+  <img src="https://img.shields.io/badge/coverage-SQLite-orange?logo=sqlite&logoColor=white" alt="SQLite">
+  <img src="https://img.shields.io/badge/async-ready-1f8acb?logo=asyncio&logoColor=white" alt="Async">
+</p>
+
 > Scraping + IA local. Sin API keys. Sin salir de tu maquina.
 
 **RASPAL SCRAPER** extrae datos estructurados de cualquier web usando IA local. Sin enviar datos a terceros. Sin pagar APIs de terceros. Un solo comando.
